@@ -10,14 +10,17 @@ export default class SearchBar extends Component{
   }
 
   // All dom event handles come with an event object
+  // May need to bind the context too
   onInputChange(event){
-    console.log(event.target.value);
     this.setState({ term: event.target.value });
+  }
+  onFormSubmit(event){
+    event.preventDefault();
   }
 
   render () {
     return (
-      <form className="input-group">
+      <form onSubmit={this.onFormSubmit} className="input-group">
         <input
           placeholder="Search a city"
           className="form-control"
